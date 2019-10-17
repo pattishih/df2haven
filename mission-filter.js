@@ -453,7 +453,8 @@ MissionsTable.Filter = {
         this.createFilters();
         this.activateFilterListeners();
         this.setFilters();
-        this.showFilterTools();        
+        this.showFilterTools();  
+        this.activateFilterToggleBtn()      
         //this.observeTableChanges();
 
         /*$(".fa-align-left").on("click", (evt)=>{
