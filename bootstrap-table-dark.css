@@ -239,7 +239,7 @@ Note: this CSS file contains specifications of additional classes that are speci
   }
 }
 @media (max-width: 450px) {
-  .fixed-table-toolbar .fa-eye,
+  .fixed-table-toolbar .fa-sort-amount-asc,
   .fixed-table-toolbar .fa-align-left {
     display: none !important;
   }
