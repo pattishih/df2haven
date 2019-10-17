@@ -142,7 +142,7 @@ MissionsTable.Filter = {
         }
         sessionStorage.filters = JSON.stringify(filters);
     },
-    setFilters: function(obs) {
+    setFilters: function() {
         if (sessionStorage.filters && sessionStorage.filters !== "undefined") {
             let filters = JSON.parse(sessionStorage.filters);
             for (let colname in filters) {
@@ -164,14 +164,12 @@ MissionsTable.Filter = {
                         break;
                     case 'reward_cash':                    
                     case 'reward_exp':
-                        //$("th[data-field='"+colname+"'] .dropdown-item[value='"+filters[colname].dir+"']").click();
                         $("th[data-field='"+colname+"'] button.filter-control").val(filters[colname].dir).change();
                         $("th[data-field='"+colname+"'] input.filter-control").val(filters[colname].val).trigger("input");
                         break;
                 }      
             }      
         }
-        if (obs) this.observeTableChanges();
     },
     applyFiltersCardView: function() {
         if (sessionStorage.filtered && sessionStorage.filtered != "undefined") {
@@ -273,34 +271,26 @@ MissionsTable.Filter = {
 
         if (numRows > 0) {
             let colname = that.closest("th").getAttribute("data-field"),
-            numCols = $rows[0].children.length,
             targetCol = this.columnHeaderMap[colname];
             
             for (let r = numRows; r--;) {
-                let classes = $rows[r].classList;
-                //if (!classes.contains("hide") && 
-                    //(classes.contains("filtered-" + colname) || !~classes.value.indexOf("filtered-"))) {  
-                    switch (filterType) {
-                        case "text":
-                            filterOut = this.negCompareClasses($rows[r].children[targetCol], val);
-                            break;
-                        case "check":
-                            if ($rows[r].children[targetCol]) {
-                                filterOut = this.negCompareCheckboxes($rows[r].children[targetCol].children[0], val);
-                            }
-                            break;
-                        case "num":
-                            dir = this.getButtonNodeFromNearby(that).value;
-                            filterOut = this.negCompareNumber($rows[r].children[targetCol], dir, val);
-                            break;
-                    }
-
-                    if (filterOut) {
-                        $rows[r].classList.add("filtered-" + colname);
-                    } else {
-                        $rows[r].classList.remove("filtered-" + colname);
-                    }                 
-                //}
+                //let classes = $rows[r].classList;
+                switch (filterType) {
+                    case "text":
+                        filterOut = this.negCompareClasses($rows[r].children[targetCol], val);
+                        break;
+                    case "check":
+                        if ($rows[r].children[targetCol]) {
+                            filterOut = this.negCompareCheckboxes($rows[r].children[targetCol].children[0], val);
+                        }
+                        break;
+                    case "num":
+                        dir = this.getButtonNodeFromNearby(that).value;
+                        filterOut = this.negCompareNumber($rows[r].children[targetCol], dir, val);
+                        break;
+                }
+                if (filterOut) $rows[r].classList.add("filtered-" + colname); 
+                else $rows[r].classList.remove("filtered-" + colname);
             }
         }
         this.saveFilters();
@@ -430,38 +420,11 @@ MissionsTable.Filter = {
             .off("click")
             .on("click", ()=>{this.clearFilters()});
     },
-    observeTableChanges: function() {
-        let changeCallback = (mutations, observer)=>{
-            observer.disconnect(); //disconnect for when we change table elements... reconnect later.
-            //if ($("div.filter").length === 0) {
-                //this.createFilters();
-                //this.activateFilterListeners();
-                //this.showFilterTools();
-                //MissionsTable.Help.abbrev();
-            //}
-            this.setFilters(observer);
-            //console.log('Dom Changed');
-        }
-        // create an observer instance
-        let observer = new MutationObserver(changeCallback);
-                
-        // pass in the currentTarget node, as well as the observer options
-        observer.observe(document.querySelector("#missions_table>tbody"), 
-            { attributes: true, childList: true, characterData: false, subtree: false, attributeFilter: ["id", "colspan"] });
-    },    
     init: function() {//note: these functions are order-sensitive
         this.createFilters();
         this.activateFilterListeners();
         this.setFilters();
-        this.showFilterTools();  
-        this.activateFilterToggleBtn();
-        //this.observeTableChanges();
-
-        /*$(".fa-align-left").on("click", (evt)=>{
-            let that = evt.currentTarget;
-            if (that.classList.contains("active"))
-                this.applyFiltersCardView();
-        });*/        
-        
+        this.showFilterTools();
+        //this.observeTableChanges();       
     }
 };
