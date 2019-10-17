@@ -82,10 +82,6 @@
             var sModal = '  <div class="modal fade" id="' + _selector + '" tabindex="-1" role="dialog" aria-labelledby="' + _selector + 'Label" aria-hidden="true">';
             sModal += '         <div class="modal-dialog">';
             sModal += '             <div class="modal-content">';
-            sModal += '                 <div class="modal-header">';
-            sModal += '                     <h4 class="modal-title " id="' + _selector + 'Label">' + that.options.formatMultipleSort() + '</h4>';
-            sModal += '                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';            
-            sModal += '                 </div>';
             sModal += '                 <div class="modal-body">';
             sModal += '                     <div class="bootstrap-table">';
             sModal += '                         <div class="fixed-table-container">';
