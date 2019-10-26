@@ -19,11 +19,10 @@ Note: this CSS file contains specifications of additional classes that are speci
 .fixed-table-body {
   overflow-x: auto;
   overflow-y: auto;
-  height: 100%;
+  height: calc(100vh - 115px)!important;
 }
 .fixed-table-container .table {
   margin-bottom: 0 !important;
-  width: 100%;
 }
 .fixed-table-container thead th:focus {
   outline: transparent solid 0;
