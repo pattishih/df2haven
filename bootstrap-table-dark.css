@@ -719,3 +719,6 @@ div#sortModal_missions_table {
 #sortModal_missions_table .modal-header {
   display: none;
 }
+.modal { border-radius: 0!important; -webkit-border-radius: 0!important; -moz-border-radius: 0!important; -ms-border-radius: 0!important; -o-border-radius: 0!important;}
+.mobile-view #missions_table .tips-abbrv{visibility:visible}
+.slide-up+.bootstrap-table .fixed-table-body{height: calc(100vh - 66px)!important}
