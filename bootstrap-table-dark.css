@@ -488,11 +488,11 @@ tbody > tr:not(:first-child).card-views {
 }
 .card-view .cell-guide .tips-abbrv {
   font-size: 1.35rem;
-  margin-top: -20px;
-  margin-right: -8px;
-  padding: 6px;
-  height: 30px;
-  width: 30px;
+  margin-top: -17px;
+  margin-right: 2px;
+  height: 18px;
+  width: 18px;
+  line-height: 1;
 }
 .card-view .cell-guide {
   display: inline-block;
