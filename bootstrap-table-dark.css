@@ -19,6 +19,9 @@ Note: this CSS file contains specifications of additional classes that are speci
 .fixed-table-container .table {
   margin-bottom: 0 !important;
 }
+.mobile-view .fixed-table-container .table {
+  margin-bottom: 48px!important;
+}
 .fixed-table-container thead th:focus {
   outline: transparent solid 0;
 }
@@ -702,12 +705,12 @@ tr[class*='filtered-'] {
   top:calc(50% - 7px);
   right:10px;
   color: #7a80dd;
+  background-color: #191919;
 }
 .search .fa-times-circle:hover,
 .search .fa-times-circle:active {
   color: #4d508c;
 }
-
 .summary-text {
   text-align: right;
   padding: 0.9rem !important;
