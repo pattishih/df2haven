@@ -259,7 +259,9 @@ Note: this CSS file contains specifications of additional classes that are speci
 .dark .table td,
 .dark .table tr {
   border-color: #343a40;
-  border-width: 4px;
+}
+.dark.mobile-view .table tr {
+  border-bottom-width: 4px;
 }
 .dark .table thead th {
   color: #aaa;
