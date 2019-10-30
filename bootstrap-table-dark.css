@@ -660,9 +660,13 @@ input::-webkit-calendar-picker-indicator {
   color: #949aff !important;
 }
 .filter .fa-eraser.filter-control {
-  background-color: rgba(173, 181, 189, 0.5);
+  background-color: #7a80dd;
   width: 26px;
   padding: 0;
+  margin-left: 2px;
+}
+.fa-eraser.filter-control:hover, .fa-eraser.filter-control:active, .fa-eraser.filter-control:focus {
+  background-color: #4d508c;
 }
 .filter-checkbox button.filter-control {
   background-color: rgba(173, 181, 189, 0.5);
