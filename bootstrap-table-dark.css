@@ -260,8 +260,8 @@ Note: this CSS file contains specifications of additional classes that are speci
 .dark .table tr {
   border-color: #343a40;
 }
-.dark.mobile-view .table tr {
-  border-bottom-width: 4px;
+.dark.mobile-view .table .card-views {
+  border-bottom: 4px solid #343a40;
 }
 .dark .table thead th {
   color: #aaa;
