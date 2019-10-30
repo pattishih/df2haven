@@ -3,12 +3,6 @@ to accomodate the dark theme of https://www.df2haven.com
 
 Note: this CSS file contains specifications of additional classes that are specific to df2haven
 ---------------------------------*/
-
-.fixed-table-body thead th .th-inner,
-.table td,
-.table th {
-  box-sizing: border-box;
-}
 .fixed-table-container {
   position: relative;
   clear: both;
@@ -21,6 +15,7 @@ Note: this CSS file contains specifications of additional classes that are speci
   overflow-y: auto;
   height: calc(100vh - 115px)!important;
 }
+.slide-up+.bootstrap-table .fixed-table-body{height: calc(100vh - 66px)!important}
 .fixed-table-container .table {
   margin-bottom: 0 !important;
 }
@@ -142,17 +137,18 @@ Note: this CSS file contains specifications of additional classes that are speci
 .fixed-table-toolbar {
   padding: 0 8px 9px;
   background-color: #191919;
-  border-bottom: 1px solid#292929;
+  border-bottom: 1px solid #222;
   width: 100%;
   max-height: 56px;
 }
 .fixed-table-toolbar .btn-secondary {
   background-color: #444;
-  color: white;
+  color: #fff;
   border-color: #333;
 }
 .fixed-table-toolbar .btn-secondary:hover,
-.fixed-table-toolbar .btn-secondary:focus {
+.fixed-table-toolbar .btn-secondary:active,
+.fixed-table-toolbar .show .btn-secondary {
   background-color: #393939;
 }
 .fixed-table-toolbar .btn-secondary:active {
@@ -458,6 +454,7 @@ tr[data-index] > td:nth-child(1) {
 .selected .tips-abbrv {
   color: #444;
 }
+.mobile-view #missions_table .tips-abbrv{visibility:visible}
 .card-views {
   padding: 10px 10px 5px 10px;
 }
@@ -605,7 +602,7 @@ tbody > tr:not(:first-child).card-views {
     padding: 1em;
 }
 .filter {
-  padding: 0 0.1rem 0.2rem 0.1rem;
+  margin: 0 .11rem .2rem;
 }
 input::-webkit-calendar-picker-indicator {
   background: transparent;
@@ -636,6 +633,7 @@ input::-webkit-calendar-picker-indicator {
 }
 .filter-group {
   min-width: 60px;
+  width: calc(100% - .2rem);
 }
 .filter-number .input-group-prepend {
   margin-right: -2px;
@@ -677,6 +675,7 @@ input::-webkit-calendar-picker-indicator {
   background-color: #313131;
   border-color: #333;
 }
+.filter-control.active{box-shadow:0 0 1px .1rem #7a80dd}
 .fht-cell .dropdown-item i.fa-square,
 .fht-cell .dropdown-item i.fa-minus-square,
 .fht-cell .dropdown-item i.fa-check-square {
@@ -697,6 +696,18 @@ tr[class*='filtered-'] {
   visibility: hidden;
   height: 24px;
 }
+.search .fa-times-circle {
+  position:absolute;
+  height:14px;
+  top:calc(50% - 7px);
+  right:10px;
+  color: #7a80dd;
+}
+.search .fa-times-circle:hover,
+.search .fa-times-circle:active {
+  color: #4d508c;
+}
+
 .summary-text {
   text-align: right;
   padding: 0.9rem !important;
@@ -715,10 +726,7 @@ div#sortModal_missions_table {
 .modal .table tbody tr {
   font-size: 0.9rem;
 }
-
 #sortModal_missions_table .modal-header {
   display: none;
 }
 .modal { border-radius: 0!important; -webkit-border-radius: 0!important; -moz-border-radius: 0!important; -ms-border-radius: 0!important; -o-border-radius: 0!important;}
-.mobile-view #missions_table .tips-abbrv{visibility:visible}
-.slide-up+.bootstrap-table .fixed-table-body{height: calc(100vh - 66px)!important}
