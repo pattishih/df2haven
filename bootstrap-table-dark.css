@@ -98,11 +98,6 @@ Note: this CSS file contains specifications of additional classes that are speci
   background-color: #222;
   text-align: center;
 }
-.fixed-table-body .card-view .title {
-  font-weight: 700;
-  display: inline-block;
-  text-align: left !important;
-}
 .table td,
 .table th {
   vertical-align: middle;
@@ -264,6 +259,7 @@ Note: this CSS file contains specifications of additional classes that are speci
 .dark .table td,
 .dark .table tr {
   border-color: #343a40;
+  border-width: 4px;
 }
 .dark .table thead th {
   color: #aaa;
@@ -375,7 +371,7 @@ td.col-guide {
   color: rgba(173, 173, 173, 0.5) !important;
 }
 .highlight {
-  background-color: rgba(52, 152, 219, 0.7) !important;
+  background-color: rgba(80, 176, 250, 0.6)!important;
 }
 .selected.highlight {
   background-color: #1f1f1f !important;
@@ -394,12 +390,12 @@ tr[data-index] > td:nth-child(1) {
 }
 .btn-mission-dropdown {
   padding: 0;
-  padding-left: 0.1rem;
+  padding-left: 1px;
   width: 30px;
   height: 30px;
   background: transparent;
   border: transparent;
-  color: #aaa;
+  color: rgba(220, 220, 220, 0.6);
   font-size: 1.1rem;
   border-radius: 50%;
 }
@@ -433,7 +429,7 @@ tr[data-index] > td:nth-child(1) {
 #missions_table .tips-abbrv.pulse-continuous {
   visibility: visible;
 }
-#missions_table tr:hover .cell-guide .tips-abbrv {
+#missions_table tr:hover .cell-guide .tips-abbrv, #missions_table .tips-abbrv[aria-describedby] {
   visibility: visible;
 }
 .cell-guide .tips-abbrv {
@@ -445,7 +441,7 @@ tr[data-index] > td:nth-child(1) {
   border-radius: 50%;
   height: 14px;
   width: 14px;
-  color: #888;
+  color: rgba(255, 255, 255, 0.4);
   cursor: pointer;
 }
 .cell-guide .tips-abbrv:hover,
@@ -459,7 +455,7 @@ tr[data-index] > td:nth-child(1) {
 }
 .mobile-view #missions_table .tips-abbrv{visibility:visible}
 .card-views {
-  padding: 10px 10px 5px 10px;
+  padding: 10px 10px 5px;
 }
 tbody > tr:not(:first-child).card-views {
   border-top: 4px solid#444444;
@@ -477,26 +473,10 @@ tbody > tr:not(:first-child).card-views {
   margin-bottom: 5px;
 }
 .card-views div:nth-child(7) {
-  border-top: 2px dotted rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255,255,255,.1);
   margin-top: 2px;
   padding-top: 2px;
   display: block !important;
-}
-.card-views div:nth-child(8) {
-  border-bottom: 2px dotted rgba(255, 255, 255, 0.1);
-  margin-bottom: 4px;
-  margin-top: 8px;
-}
-.card-views div:nth-child(8) > .title {
-  display: none;
-}
-.card-views div:nth-child(8) > .value {
-  width: auto;
-  float: right;
-  margin-left: auto !important;
-  margin-top: -28px;
-  margin-bottom: 1px;
-  height: 0;
 }
 .card-view .fa-map-o {
   display: none;
@@ -505,9 +485,12 @@ tbody > tr:not(:first-child).card-views {
   margin-left: 0 !important;
 }
 .card-view .cell-guide .tips-abbrv {
-  font-size: 1.3rem;
-  margin-top: -14px;
-  margin-right: 2px;
+  font-size: 1.35rem;
+  margin-top: -20px;
+  margin-right: -8px;
+  padding: 6px;
+  height: 30px;
+  width: 30px;
 }
 .card-view .cell-guide {
   display: inline-block;
@@ -524,6 +507,15 @@ tbody > tr:not(:first-child).card-views {
   display: block;
   padding: 0;
 }
+.card-view span.badge {
+  font-size: .8rem;
+  padding: 3px 6px;
+}
+.card-view .cell-add .mission-comments {
+  font-size: 1.3rem;
+  margin-left: 0.9rem!important;
+  width: 30px;
+}
 .card-view .vote-up,
 .card-view .vote-down {
   display: inline-block;
@@ -533,17 +525,37 @@ tbody > tr:not(:first-child).card-views {
   height: 22px;
 }
 .card-views .voting i.fa {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   padding: 6px 0;
-  line-height: 0.4;
+  line-height: 0.2;
   width: 22px;
 }
 .card-view .voting span {
   margin-top: -4px;
   display: inline-block;
 }
+.card-views div:nth-child(8) {
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  margin-bottom: 4px;
+  margin-top: 8px;
+}
+.card-views div:nth-child(8) > .title {
+  display: none;
+}
+.card-views div:nth-child(8) > .value {
+  width: auto;
+  float: right;
+  margin-left: auto !important;
+  margin-top: -30px;
+  margin-bottom: 1px;
+  margin-right: -8px;
+  height: 0;
+}
 .card-view .title {
-  color: #aaa;
+  font-weight: 700;
+  display: inline-block;
+  text-align: left!important;
+  color: rgba(255, 255, 255, 0.5);
   vertical-align: middle;
   font-size: 0.8rem;
   min-width: 98px !important;
@@ -557,11 +569,11 @@ tbody > tr:not(:first-child).card-views {
   min-height: 1px;
 }
 .card-view .btn-mission-dropdown i.fa {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   line-height: 1.4;
   width: 32px;
   height: 32px;
-  padding-right: 3px;
+  padding-right: 7px;
   padding-left: 4px;
 }
 .card-view .btn-mission-dropdown {
