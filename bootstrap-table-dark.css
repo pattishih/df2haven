@@ -649,8 +649,8 @@ input::-webkit-calendar-picker-indicator {
   line-height: 1.5;
 }
 .filter-group {
-  min-width: 60px;
-  width: calc(100% - .2rem);
+  min-width: 56px;
+  width: calc(99% - 0.2rem);
 }
 .filter-number .input-group-prepend {
   margin-right: -2px;
