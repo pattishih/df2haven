@@ -697,7 +697,7 @@ input::-webkit-calendar-picker-indicator {
   background-color: #313131;
   border-color: #333;
 }
-.filter-control.active,.filter-group.active{box-shadow:0 0 2px 0 #5d6cca}
+.filter-control.active,.filter-group.active{box-shadow:0 0 0 1px #5d6cca}
 .fht-cell .dropdown-item i.fa-square,
 .fht-cell .dropdown-item i.fa-minus-square,
 .fht-cell .dropdown-item i.fa-check-square {
