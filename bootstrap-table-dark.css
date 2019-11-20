@@ -1,27 +1,47 @@
 /* Modified CSS from Bootstrap Table by zhixin wen
 to accomodate the dark theme of https://www.df2haven.com
-
 Note: this CSS file contains specifications of additional classes that are specific to df2haven
 ---------------------------------*/
+body{background-color:#191919}
+.table td,
+.table th {
+  vertical-align: middle;
+}
 .fixed-table-container {
   position: relative;
   clear: both;
+  /*overflow-x: hidden;*/
+  margin-bottom: 50px;
+}
+.mobile-view .fixed-table-container, .mobile-view-plus .fixed-table-container {
+  overflow-x: auto;
 }
 .fixed-table-header {
   overflow: hidden;
 }
-.fixed-table-body {
+/*.fixed-table-body {
   overflow-x: auto;
   overflow-y: auto;
   height: calc(100vh - 115px)!important;
-}
-.slide-up+.bootstrap-table .fixed-table-body{height: calc(100vh - 66px)!important}
+}*/
+/*.slide-up+.bootstrap-table .fixed-table-body{height: calc(100vh - 66px)!important}*/
 .fixed-table-container .table {
   margin-bottom: 0 !important;
 }
 .mobile-view .fixed-table-container .table {
-  margin-bottom: 48px!important;
+  margin-bottom: 50px!important;
 }
+.fixed-table-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: fixed;
+  bottom: 13px;
+  left: 0;
+  right: 0;
+  z-index: 1031;
+  background-color: rgba(30, 30, 30, 0.3);
+}
+.scroll-bottom{height:1px}
 .fixed-table-container thead th:focus {
   outline: transparent solid 0;
 }
@@ -30,7 +50,7 @@ Note: this CSS file contains specifications of additional classes that are speci
 }
 .fixed-table-container tbody td .th-inner,
 .fixed-table-container thead th .th-inner {
-  padding: 8px;
+  padding: 3px 8px 5px;
   line-height: 24px;
   vertical-align: top;
   overflow: hidden;
@@ -56,7 +76,7 @@ Note: this CSS file contains specifications of additional classes that are speci
   width: 30px;
 }
 .fixed-table-container tbody td {
-  border-left: 1px solid#343a40;
+  border-left: 1px solid#313444;
 }
 .fixed-table-container tbody tr:first-child td {
   border-top: none;
@@ -67,25 +87,6 @@ Note: this CSS file contains specifications of additional classes that are speci
 .fixed-table-container input[type='radio'],
 .fixed-table-container input[type='checkbox'] {
   margin: 0 auto !important;
-}
-.fixed-table-toolbar .columns-left {
-  margin-right: 5px;
-}
-.fixed-table-toolbar .columns-right {
-  margin-left: 5px;
-}
-.fixed-table-toolbar .columns label {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: 400;
-  line-height: 1.428571429;
-}
-.fixed-table-toolbar .bs-bars,
-.fixed-table-toolbar .columns,
-.fixed-table-toolbar .search {
-  position: relative;
-  line-height: 34px;
 }
 .fixed-table-loading {
   display: none;
@@ -98,9 +99,30 @@ Note: this CSS file contains specifications of additional classes that are speci
   background-color: #222;
   text-align: center;
 }
-.table td,
-.table th {
-  vertical-align: middle;
+.fixed-table-toolbar {
+  padding: 8px;
+  background-color: #191919;
+  width: 100%;
+  max-height: 56px;
+  margin-top: 50px;
+}
+.fixed-table-toolbar:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.fixed-table-toolbar .table-toolbar label {
+  display: block;
+  padding: 6px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+}
+.fixed-table-toolbar .table-toolbar,
+.fixed-table-toolbar .search {
+  position: relative;
+  line-height: 34px;
 }
 .fixed-table-toolbar .dropdown-menu {
   text-align: left;
@@ -114,30 +136,6 @@ Note: this CSS file contains specifications of additional classes that are speci
 .fixed-table-toolbar .dropdown-item input[type='checkbox'] {
   margin-right: 0.5em;
   margin-left: -0.5em;
-}
-.bootstrap-table .fixed-table-footer tbody > tr > td {
-  padding: 0 !important;
-}
-.bootstrap-table .fixed-table-footer .table {
-  border-bottom: none;
-  border-radius: 0;
-  padding: 0 !important;
-}
-.bootstrap-table .pull-right .dropdown-menu {
-  right: 0;
-  left: auto;
-}
-.fixed-table-toolbar:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-.fixed-table-toolbar {
-  padding: 0 8px 9px;
-  background-color: #191919;
-  border-bottom: 1px solid #222;
-  width: 100%;
-  max-height: 56px;
 }
 .fixed-table-toolbar .btn-secondary {
   background-color: #444;
@@ -178,12 +176,6 @@ Note: this CSS file contains specifications of additional classes that are speci
   border: 0;
   box-shadow: inset 0 0 0 1px#393939;
 }
-.fixed-table-toolbar .bs-bars,
-.fixed-table-toolbar .columns,
-.fixed-table-toolbar .search {
-  margin-top: 8px;
-  margin-bottom: 0;
-}
 .fixed-table-toolbar .fa-eye.active,
 .fixed-table-toolbar .fa-hourglass-half.active,
 .fixed-table-toolbar .fa-filter.active,
@@ -206,7 +198,7 @@ Note: this CSS file contains specifications of additional classes that are speci
 .export .dropdown-menu li > a.active {
   background-color: #444 !important;
 }
-.btn-group,
+.fixed-table-toolbar .btn-group,
 .fixed-table-toolbar .btn,
 .fixed-table-toolbar input[type='text'] {
   height: 38px;
@@ -214,7 +206,12 @@ Note: this CSS file contains specifications of additional classes that are speci
 .fixed-table-toolbar .btn.fa {
   width: 40px;
 }
+/*.table-toolbar {
+  margin-top: 8px;
+  margin-bottom: 0;
+}*/
 .float-right.search {
+  margin: 0 0 0 5px;
   max-width: 350px;
   width: 100%;
 }
@@ -256,17 +253,30 @@ Note: this CSS file contains specifications of additional classes that are speci
     display: none !important;
   }
 }
+.bootstrap-table .fixed-table-footer tbody > tr > td {
+  padding: 0 !important;
+}
+.bootstrap-table .fixed-table-footer .table {
+  border-bottom: none;
+  border-radius: 0;
+  padding: 0 !important;
+}
+.bootstrap-table .pull-right .dropdown-menu {
+  right: 0;
+  left: auto;
+}
 .dark .table td,
 .dark .table tr {
-  border-color: #343a40;
+  border-color: #313444;
 }
 .dark.mobile-view .table .card-views {
-  border-bottom: 4px solid #343a40;
+  border-bottom: 4px solid #313444;
 }
 .dark .table thead th {
   color: #aaa;
   background-color: #191919;
-  border: 1px solid transparent;
+  border: 0;
+  border-top: 1px solid #222;
   vertical-align: bottom;
   padding: 0;
   margin: 0;
@@ -319,8 +329,11 @@ th.voting div {
 td .voting {
   display: inline-block;
 }
-td .voting i.fa {
-  font-size: 1rem;
+.vote-up > .fa-thumbs-up, .vote-down > .fa-thumbs-down {
+  cursor: pointer;
+  font-size: 1.1em;
+  width: 1.28571429em;
+  text-align: center;
 }
 td.col-guide {
   min-width: 234px;
@@ -338,6 +351,14 @@ td.col-guide {
   position: absolute;
   bottom: 0;
   left: 0;
+}
+.alive {
+  line-height: .2;
+}
+.alive, .dead {
+  margin: 0 .5rem;
+  font-size: 1.33333333em;
+  vertical-align: -15%;
 }
 .mission.col-guide.empty {
   padding: 0.3rem;
@@ -373,7 +394,7 @@ td.col-guide {
   color: rgba(173, 173, 173, 0.5) !important;
 }
 .highlight {
-  background-color: rgba(80, 176, 250, 0.6)!important;
+  background-color: rgba(80, 176, 250, 0.5)!important;
 }
 .selected.highlight {
   background-color: #1f1f1f !important;
@@ -417,9 +438,10 @@ tr[data-index] > td:nth-child(1) {
 .btn-mission-dropdown i.fa {
   width: 30px;
   height: 30px;
-  line-height: 1.6;
+  line-height: 1.9;
   background: transparent;
   border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(230,230,230,0.1);
 }
 .dropright .btn-mission-dropdown:active i.fa,
 .dropright .btn-mission-dropdown.active i.fa {
@@ -531,6 +553,7 @@ tbody > tr:not(:first-child).card-views {
   padding: 6px 0;
   line-height: 0.2;
   width: 22px;
+  vertical-align: baseline;
 }
 .card-view .voting span {
   margin-top: -4px;
@@ -572,21 +595,21 @@ tbody > tr:not(:first-child).card-views {
 }
 .card-view .btn-mission-dropdown i.fa {
   font-size: 1.4rem;
-  line-height: 1.4;
+  line-height: 1.55;
   width: 32px;
   height: 32px;
-  padding-right: 7px;
-  padding-left: 4px;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 .card-view .btn-mission-dropdown {
   width: unset;
   height: unset;
-  margin-left: -3px;
+  margin-left: -5px;
 }
 .card-view .dropright {
   position: absolute;
-  right: -5px;
-  top: -5px;
+  right: 0;
+  top: -2px;
   width: 30px;
 }
 .card-view .dropright .dropdown-menu {
@@ -740,15 +763,65 @@ tr[class*='filtered-'] {
   font-size: 1rem;
 }
 div#sortModal_missions_table {
-  top: 10%;
+  padding-top: 10%;
 }
-.modal .fixed-table-container thead .th-inner {
+#sortModal_missions_table .fixed-table-container thead .th-inner {
   padding: 2px 13px;
 }
-.modal .table tbody tr {
+#sortModal_missions_table .table tbody tr {
   font-size: 0.9rem;
+}
+#sortModal_missions_table th {
+  background-color: #222!important;
 }
 #sortModal_missions_table .modal-header {
   display: none;
 }
-.modal { border-radius: 0!important; -webkit-border-radius: 0!important; -moz-border-radius: 0!important; -ms-border-radius: 0!important; -o-border-radius: 0!important;}
+#sortModal_missions_table td {
+  padding: 6px;
+}
+#sortModal_missions_table .bars button {
+  margin-right: 4px;
+}
+.modal { border-radius: 0!important; -webkit-border-radius: 0!important; -moz-border-radius: 0!important; -ms-border-radius: 0!important; -o-border-radius: 0!important}
+.modal .fixed-table-container, .modal .fixed-table-container .table {
+  margin-bottom: 0!important;
+}
+#mission_dropdown .dropdown-item.disabled, #mission_dropdown .dropdown-item:disabled {
+  color: #666;
+}
+#mission_dropdown button.dropdown-item {
+  font-family: 'Roboto',Arial,Helvetica,sans-serif;
+  font-weight: 500;
+}
+#mission_dropdown .dropdown-item i {
+  font-size: 1.3em;
+  line-height: 1.5;
+  height: 100%;
+  color: #999;
+  margin-right: .6rem;
+  width: 1.3em;
+  text-align: center;
+}
+.context-menu {
+  position:fixed!important;
+}
+.dropdown-guide {
+  display: none;
+}
+.show-guide > .dropdown-guide {
+  display: block;
+}
+.dropdown-note {
+  font-size: .7em;
+  font-weight: 400;
+  font-style: italic;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  padding: 0.3rem 1.2rem 0.1rem 1rem;
+  color: #888;
+  white-space: nowrap;
+}
+.context-menu-box td {
+  border-top: 2px solid #4FB0FA!important;
+  border-bottom: 2px solid #4fB0FA!important;
+}
